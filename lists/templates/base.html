@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	 <head>
+		 <title>To Do lists</title>
+		 
+		 <!-- viewport is a virtual window which is usually larger than size of mobile device, 
+              preventing it from being squeezed into a small screen
+         -->
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 
+		 <!-- Linked to a css file, which is the stylesheet of this file, displayed on PC screen -->
+		 <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+	<div class="container">
+		 <!-- button and input box -->
+		  <div class="row">
+			  <!-- On middle-sized device: cover 6 columns,  -->
+			  <div class="col-md-6 col-ms-offset=3 jumbotron">
+				  <div class="text-center">
+					  <h1>{% block header_text %}{% endblock %}</h1>
+					  <form method="POST" action="{% block form_action %}{% endblock %}">
+					  		<button name="{% block btn_name %}{% endblock %}" 
+							  	id="{% block btn_id %}{% endblock %}">{% block btn_text %}{% endblock %}
+						    </button>
+						    <!-- Input initialized as "Enter a to-do item" -->
+					  	    <input name="item_text" 
+								   id="id_new_item" 
+								   placeholder="Enter a to-do item" 
+						    />						  
+					        {% csrf_token %}
+					  </form>
+				  </div>
+			  </div>
+		  </div>
+		
+		 <!-- list -->
+          <div class="row">
+			  <!-- On middle-sized device: cover 6 columns,  -->
+			  <div class="col-md-6 col-ms-offset=3">	
+				 {% block table %}
+				 {% endblock %}			
+			  </div>
+		 </div>
+	</div>
+	</body> 
+</html>
