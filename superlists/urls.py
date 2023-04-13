@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from lists import views
 
+"""
+    Map: url-->function
+    eg. Visiting "http://...lists/the_only-list-in-the-world/" will call views.view_list(request),
+        which fetches list items from database and puts them into list.html and displays it
+"""
 urlpatterns = [
     # path('admin/', admin.site.urls),
-
     #   path: '/'
-    path('', views.home_page, name='home'),
+
+    path(r'', views.home_page, name='home'),
+    path('lists/the_only-list-in-the-world/', views.view_list, name='view_list'),
+    path('lists/new', views.new_list, name='new_list'),
 ]
